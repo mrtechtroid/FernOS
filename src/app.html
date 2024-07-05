@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Fern OS</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<link rel="preload" as="style"rel="stylesheet" onload="this.rel = 'stylesheet'" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+<script src="https://www.youtube.com/iframe_api"></script>
+		%sveltekit.head%
+		<style>
+			* {
+		  margin: 0;
+		  padding: 0;
+		  font-family:Nunito;
+		}
+		.material-symbols-rounded {
+			  font-variation-settings:
+			  'FILL' 1,
+			  'wght' 700,
+			  'GRAD' -25,
+			  'opsz' 24;
+			  /* font-size:1px; */
+			}
+		</style>
+		<style src = "app.css"></style>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

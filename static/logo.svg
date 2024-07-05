@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="20 20 92.1053 128.6239" width="92.1053" height="128.6239" xmlns="http://www.w3.org/2000/svg">
+  <g id="SvgjsG1166" featurekey="2ou6gm-0" transform="matrix(0.5863111615180969, 0, 0, 0.5863111615180969, 20.054407119750977, 19.999999999999996)" fill="#99ddcc">
+    <defs xmlns="http://www.w3.org/2000/svg"/>
+    <g xmlns="http://www.w3.org/2000/svg">
+      <path class="fil0" d="M7 122c-8,20 -10,46 -2,81 1,-27 4,-54 2,-81z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M56 70c-10,5 -19,12 -27,19 3,40 -9,73 -18,110 4,-7 8,-15 12,-22 16,-32 33,-63 33,-107z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M114 36c-7,5 -14,9 -21,13 -6,60 -37,89 -68,134 40,-51 80,-74 89,-147z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M157 60c-2,-21 -6,-42 -12,-60 -5,88 -40,112 -97,166 44,-34 84,-51 109,-106z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M150 150c3,-11 6,-23 7,-36 -39,39 -94,49 -135,85 41,-25 86,-28 128,-49z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M105 208c10,-5 18,-13 26,-21 -38,5 -73,5 -110,19 29,-4 55,-1 84,2z" style="fill: #99ddcc;"/>
+      <path class="fil0" d="M9 213c25,6 46,8 64,5 -12,-5 -53,-10 -64,-5z" style="fill: #99ddcc;"/>
+    </g>
+  </g>
+</svg>
