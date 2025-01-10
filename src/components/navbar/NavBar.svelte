@@ -43,6 +43,7 @@
 		onlineStatus = window.navigator.onLine;
 		window.addEventListener('online', () => (onlineStatus = true));
 		window.addEventListener('offline', () => (onlineStatus = false));
+		if (typeof navigator.getBattery != undefined){
 		navigator.getBattery().then((battery) => {
 			function updateAllBatteryInfo() {
 				updateChargeInfo();
@@ -65,9 +66,15 @@
 				bt.level = battery.level * 100;
 			}
 		});
+		}else{
+			bt.level = 0
+			bt.charging= false
+		}
+		
 		return () => {
 			clearInterval(interval);
 		};
+		
 	});
 	function getConfig(app_id){
 		// console.log(OP_STATUS_.appList.find(x => x.app_id === app_id))
