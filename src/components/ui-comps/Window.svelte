@@ -87,7 +87,7 @@
         $storeFE.currZIndex +=1
     }
 </script>
-<Draggable windowMaximised = {windowMaximised} windowHeight={windowHeight} windowLeft={windowLeft} windowTop={windowTop} windowWidth={windowWidth} windowHidden = {windowHidden}>
+<Draggable disableResize={disableResize} windowMaximised = {windowMaximised} windowHeight={windowHeight} windowLeft={windowLeft} windowTop={windowTop} windowWidth={windowWidth} windowHidden = {windowHidden}>
 <div transition:fade={{ delay: 100, duration: 100 }} on:click={changeZ} on:mousedown={changeZ} bind:this={Window_} id = {windowID} class = "window" style="z-index: {currentZIndex};height: 100%;width:100%;visibility:{windowHidden};">
     <div id = {"nav_"+windowID} class="window_nav" on:mousedown={onMouseDown}>
         <div style="display: flex;flex-direction:row;align-items:center;">
@@ -96,7 +96,9 @@
         </div>
         <div class = "closeBar" style="display: flex;flex-direction:row;align-items:center;width:80px;justify-content:space-around">
             <button class="material-symbols-rounded" on:click={minimizeSelf}>minimize</button>
+            {#if !disableMaximise}
             <button class="material-symbols-rounded" on:click={maximizeSelf}>check_box_outline_blank</button>
+            {/if}
             <button class="material-symbols-rounded" on:click={removeWindow}>close</button>
         </div>
     </div>

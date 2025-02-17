@@ -29,10 +29,40 @@
 				},
 				disableAsyncCache: true
 			});
+			try {
+				async function _() {
+					let t = Date.now();
+					console.log('started');
+					await resolveMountConfig({ backend: IndexedDB }).then((idb_) => {
+						fs.mount('/drive', idb_);
+						console.log('done! iDB. took time: ' + String(Date.now() - t) + 'ms');
+						$storeFE.iDBloaded = true;
+						try {
+							fs.mkdirSync('/drive/documents');
+							fs.mkdirSync('/drive/pictures');
+							fs.mkdirSync('/drive/music');
+							fs.mkdirSync('/drive/videos');
+						} catch (e) {
+							console.log(e);
+						}
+					});
+				}
+				setTimeout(_,0);
+			} catch (e) {
+				console.log(e);
+			}
 			completed += 1;
 			try {
 				$storeFE.bootLogs += '\n Creating /home/config';
 				fs.mkdirSync('/home/config');
+				completed += 1;
+			} catch (e) {
+				console.log(e);
+				completed += 1;
+			}
+			try {
+				$storeFE.bootLogs += '\n Creating /home/desktop';
+				fs.mkdirSync('/home/desktop');
 				completed += 1;
 			} catch (e) {
 				console.log(e);
@@ -96,29 +126,6 @@
 				} catch (e) {
 					completed += 1;
 				}
-			}
-
-			try {
-				async function _() {
-					let t = Date.now();
-					console.log('started');
-					await resolveMountConfig({ backend: IndexedDB }).then((idb_) => {
-						fs.mount('/drive', idb_);
-						console.log('done! iDB. took time: ' + String(Date.now() - t) + 'ms');
-						$storeFE.iDBloaded = true;
-						try {
-							fs.mkdirSync('/drive/documents');
-							fs.mkdirSync('/drive/pictures');
-							fs.mkdirSync('/drive/music');
-							fs.mkdirSync('/drive/videos');
-						} catch (e) {
-							console.log(e);
-						}
-					});
-				}
-				_();
-			} catch (e) {
-				console.log(e);
 			}
 			storeFE.update((val) => {
 				return { ...val, fileSysSetup: true, currentStatus: 'login' };

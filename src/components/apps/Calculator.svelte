@@ -7,8 +7,6 @@
         windowWidth:420,
         windowLeft:0,
         windowTop:0,
-        disableResize: true,
-        disableMaximise: true,
         app_id:"sys_calculator"
     }
     export let windowID = ""
@@ -16,7 +14,7 @@
     export let windowWebDefined = {
             windowHidden:"visible",
             disableMaximise:true,
-            disableResize:false,
+            disableResize:true,
             currentZIndex:5,
     }
 

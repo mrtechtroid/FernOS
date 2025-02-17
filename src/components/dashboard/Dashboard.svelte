@@ -76,5 +76,6 @@
 		height: 100vh;
         z-index:3;
         background-size: cover;
+        overflow:hidden;
     }
 </style>

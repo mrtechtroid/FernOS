@@ -2,6 +2,15 @@
 
 <script>
 	import { fade } from 'svelte/transition';
+	
+	let grabber = false;
+    export let windowHeight = 400
+    export let windowWidth = 400
+    export let windowLeft = 50
+    export let windowTop = 50
+    export let windowHidden = "visible"
+	export let windowMaximised = false;
+	export let disableResize = false;
 	function move(element) {
 		return {
 			destroy() {
@@ -10,6 +19,8 @@
 	}
 	
 	function resize(element) {
+		console.log(disableResize)
+		if (disableResize){return}
 		const right = document.createElement('div')
 		right.direction = 'east'
 		right.classList.add('grabber')
@@ -130,14 +141,6 @@
 			}
 		}
 	}
-	
-	let grabber = false;
-    export let windowHeight = 400
-    export let windowWidth = 400
-    export let windowLeft = 50
-    export let windowTop = 50
-    export let windowHidden = "visible"
-	export let windowMaximised = false;
 </script>
 
 	<div transition:fade={{ delay: 0, duration: 100 }} class="box {windowMaximised?"maximise":""} hide-grabber" use:move use:resize style="width: {windowWidth}px; left:{windowLeft}px;top:{windowTop}px;height:{windowHeight}px; visibility:{windowHidden};">
@@ -148,7 +151,7 @@
 <style>
 	.maximise{
         width:100vw !important;
-        height:100vh !important;
+        height:calc(100vh - 3.5rem) !important;
 		top:0px !important;
 		left:0px !important;
     }

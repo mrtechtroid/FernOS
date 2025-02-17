@@ -8,15 +8,13 @@
         windowWidth:400,
         windowLeft:0,
         windowTop:0,
-        disableResize: false,
-        disableMaximise: false,
         app_id:"about_fern"
     }
     export let windowID = ""
     export let app_id = ""
     export let windowWebDefined = {
             windowHidden:"visible",
-            disableMaximise:true,
+            disableMaximise:false,
             disableResize:false,
             currentZIndex:5,
     }

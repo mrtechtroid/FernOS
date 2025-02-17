@@ -28,11 +28,16 @@
 	let color = "#ffffff"
 	let sett_json
 	let url_image = ""
+	let disableJSON = false
 	function loadJSON(){
+		try{
 		sett_json = JSON.parse(fs.readFileSync("/home/settings.txt", { encoding: 'utf8', flag: 'r' }));
 		background_type = sett_json.background.mainscreen.type
 		color = sett_json.background.mainscreen.color
 		url_image = sett_json.background.mainscreen.imgLocation
+		}catch(e){
+			disableJSON = true
+		}
 	}
 	function syncJSON(e){
 		if (!sett_json){
@@ -46,6 +51,17 @@
 
 		}
 	}
+	function deleteLocalStorage(){
+		localStorage.clear();
+    	document.location.reload();
+	}
+	function deleteIndexDB(){
+			window.indexedDB.databases().then((r) => {
+    for (var i = 0; i < r.length; i++) window.indexedDB.deleteDatabase(r[i].name);
+}).then(() => {
+    document.location.reload();
+});
+		}
 	onMount(()=>{
 		loadJSON()
 	})
@@ -68,7 +84,7 @@
 					}}>info</button
 				>
 				<button
-					class="text-xl material-symbols-rounded"
+					class="text-xl material-symbols-rounded {disableJSON?'hidden':''}"
 					on:click={function () {
 						_tab = 'background';
 					}}>image</button
@@ -78,6 +94,12 @@
 					on:click={function () {
 						_tab = 'language';
 					}}>translate</button
+				>
+				<button
+					class="text-xl material-symbols-rounded"
+					on:click={function () {
+						_tab = 'warning';
+					}}>warning</button
 				>
 				
 				<!-- <button class="text-xl material-symbols-rounded" on:click={function(){_tab = "timer"}}>hourglass_bottom</button> -->
@@ -119,6 +141,14 @@
 				<center>Version {versionString}</center>
 				<center>An Operating system right in your browser, with its own file system, suite of apps and games, built in Svelte.</center>
 				<span style="font-size:12px"><a href = "https://github.com/mrtechtroid/fern">github</a>&nbsp;•&nbsp;<a href = "mailto:fern@mtt.one">fern@mtt.one</a>&nbsp;•&nbsp;<a href = "/credits.html">credits</a></span>
+				{#if disableJSON}
+				<span style="color:red">WARNING:[CRITICAL ERROR] Failed to load settings.json. You can try deleting entire indexedDB database and reloading the page.</span>
+				{/if}
+			</div>
+			{:else if _tab == 'warning'}
+			<div style="display:flex;flex-direction:column;align-items:center">
+				<button class="button btn btn-warning" id = "deleteindexedDB" style="margin:10px" on:click={deleteLocalStorage}>Delete LocalStorage (/home/)</button>
+				<button class="button btn btn-warning" id = "deleteindexedDB" style="margin:10px" on:click={deleteIndexDB}>Delete IndexedDB(/drive/)</button>
 			</div>
 			{/if}
 		</main>
